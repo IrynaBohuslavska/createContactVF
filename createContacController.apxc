@@ -1,0 +1,19 @@
+public class createContacController {
+    
+    public Contact contact { get; set; }
+    public List<Contact> contactList { 
+        public get{return [SELECT FirstName, LastName, MobilePhone, Fax, Birthdate, Department, Description, 
+                    Email, Tax_country__c, Tax_city__c 
+                    FROM Contact];} }
+    
+    public createContacController(){
+        contact = new Contact();   
+    }
+    
+    public PageReference save(){
+        System.debug(contact);
+        insert contact;
+        contact = new Contact();
+        return null;
+    }
+}
